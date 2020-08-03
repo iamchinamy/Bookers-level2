@@ -33,4 +33,20 @@
 	<% end %>
 </div>
 
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			<th>Title</th>
+			<th>Opinion</th>
+		</tr>
+	</thead>
+	<% @books.each do |book| %>
+	<tbody>
+		<tr><%= book.title %></tr>
+		<tr><%= book.body %></tr>
+	</tbody>
+	<% end %>
+</table>
+
 <%= link_to '#Log out', destroy_user_session_path, method: :delete %>
