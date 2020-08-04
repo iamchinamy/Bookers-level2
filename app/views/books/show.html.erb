@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		
+		<% if @book.errors.any? %>
+		<div>
+			<h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
+			<ul>
+				<% @book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div class="col-lg-3">
+			<%= render 'shared/sidebar' %>
+			<% if @book.user.id == current_user.id %>
+				<%= link_to "編集(bootstrap)", edit_user_path(current_user) %>
+			<% else %>
+				<%= link_to "ジャンプ", user_path(current_user) %>
+			<% end %>
+		</div>
+
+		<div class="col-lg-9">
+			<h1>Books#show</h1>
+			<table>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+				<tr>
+					<td><%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %></td>
+					<td><%= @book.title %></td>
+					<td><%= @book.body %></td>
+				</tr>
+			</table>
+		</div>
+</div>

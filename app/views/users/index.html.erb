@@ -1,0 +1,26 @@
+<%= render 'shared/header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<%= render 'shared/sidebar' %>
+		</div>
+		<div class="col-lg-9">
+			<h1>Users#index　ユーザー一覧</h1>
+			<table class="table">
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+				</tr>
+				<% @users.each do |user| %>
+					<tr>
+						<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+						<td><%= user.name %></td>
+						<td><%= link_to "Show" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
