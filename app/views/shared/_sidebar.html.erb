@@ -1,6 +1,6 @@
 
 <h2>User info</h2>
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
+<%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg" %>
 <table class="table">
 	<tbody>
 		<tr>
@@ -14,14 +14,24 @@
 	</tbody>
 </table>
 
-<%= link_to "編集(bootstrap)", edit_user_path(current_user) %>
+<div class="row">
+	<%= link_to edit_user_path(current_user), class: "btn btn-default col-xs-12" do %>
+		<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+	<% end %>
+</div>
 
-<h2>New Book</h2>
 
+<h2>New book</h2>
 <%= form_for(@book) do |f| %>
+<div class="field row">
 	<label for="inpuTitle">Title</label>
-	<%= f.text_field :title, id: "inpuTitle" %><br>
-	<label for="inputBody">Body</label>
-	<%= f.text_area :body, id: "inputBody" %><br>
-	<%= f.submit "Create Book" %>
+	<%= f.text_field :title, id: "inpuTitle", class: "col-xs-12" %><br>
+</div>
+<div class="field row">
+	<label for="inputBody">Opinion</label>
+	<%= f.text_area :body, id: "inputBody", class: "col-xs-12" %><br>
+</div>
+<div class="action row">
+	<%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+</div>
 <% end %>
